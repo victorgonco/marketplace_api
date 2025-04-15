@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: marketplace-api
+  
+  #Spring boot deduces the datasource dialect by the URL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123456
+  
+  #Disabling automatic database conection opening to manage it by @Transactional annotations.
+  jpa:
+    open-in-view: false
+
+  liquibase:
+    enabled: true
+    #It is necessary to point sql changelog files or it will search for /db/changelog/db.changelog-master.yml
+    change-log: classpath:/db/migrations/db.changelog.sql
+    default-schema: public
